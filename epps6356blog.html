@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-09-11">
+<meta name="dcterms.date" content="2025-10-01">
 
-<title>Assignment 2 – htoisanroi.github.io</title>
+<title>Blog – htoisanroi.github.io</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -141,6 +107,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-epps-6302">    
         <li>
+    <a class="dropdown-item" href="./epps6302blog.html">
+ <span class="dropdown-text">Blog</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="./epps6302assignment1.html">
  <span class="dropdown-text">Assignment 1</span></a>
   </li>  
@@ -159,6 +129,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">EPPS 6356</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-epps-6356">    
+        <li>
+    <a class="dropdown-item" href="./epps6356blog.html">
+ <span class="dropdown-text">Blog</span></a>
+  </li>  
         <li>
     <a class="dropdown-item" href="./project.html">
  <span class="dropdown-text">Project Presentation</span></a>
@@ -192,7 +166,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Assignment 2</h1>
+<h1 class="title">Blog</h1>
 </div>
 
 
@@ -203,7 +177,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 11, 2025</p>
+      <p class="date">October 1, 2025</p>
     </div>
   </div>
   
@@ -215,73 +189,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="gtrendr" class="level4">
-<h4 class="anchored" data-anchor-id="gtrendr">gtrendR</h4>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gtrendsR)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>TrumpHarrisElection <span class="ot">=</span> <span class="fu">gtrends</span>(<span class="fu">c</span>(<span class="st">"Donald Trump"</span>,<span class="st">"Kamala Harris"</span>,<span class="st">"election"</span>), <span class="at">onlyInterest =</span> <span class="cn">TRUE</span>, <span class="at">geo =</span> <span class="st">"US"</span>, <span class="at">gprop =</span> <span class="st">"web"</span>, <span class="at">time =</span> <span class="st">"today+5-y"</span>, <span class="at">category =</span> <span class="dv">0</span>, ) <span class="co"># last five years</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>the_df<span class="ot">=</span>TrumpHarrisElection<span class="sc">$</span>interest_over_time</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(TrumpHarrisElection)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="epps6302assignment2_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="csv" class="level4">
-<h4 class="anchored" data-anchor-id="csv">CSV</h4>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.2
-✔ ggplot2   3.5.1     ✔ tibble    3.2.1
-✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-✔ purrr     1.1.0     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"Assignment 2.csv"</span>, <span class="at">skip =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Rows: 262 Columns: 4
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr  (3): Donald Trump: (United States), Kamala Harris: (United States), ele...
-date (1): Week
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">"week"</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="sc">-</span>week, <span class="sc">~</span> <span class="fu">as.numeric</span>(<span class="fu">str_replace</span>(.x, <span class="st">"&lt;1"</span>, <span class="st">"0"</span>))))</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">week =</span> <span class="fu">as.Date</span>(week))</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>df_long <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="sc">-</span>week, <span class="at">names_to =</span> <span class="st">"search_term"</span>, <span class="at">values_to =</span> <span class="st">"interest"</span>)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_long, <span class="fu">aes</span>(<span class="at">x =</span> week, <span class="at">y =</span> interest, <span class="at">color =</span> search_term)) <span class="sc">+</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Interest over time"</span>, <span class="at">x =</span> <span class="st">"Date"</span>, <span class="at">y =</span> <span class="st">"Search hits"</span>) <span class="sc">+</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="epps6302assignment2_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="analysis-and-comparison-between-the-two-methods" class="level4">
-<h4 class="anchored" data-anchor-id="analysis-and-comparison-between-the-two-methods">Analysis and comparison between the two methods</h4>
-<p>As GtrendR connects directly to the Google Trends API, it can catch up the most current data, with tidy and it’s so easy to plot. This one makes us so flexible for getting updated data. For CSV method, it only reflects the time when we downloaded it and requires more manual cleaning to analyze it. To conclude, GtrendsR is better for reproducibility and fresh results, while CSV is better for consistency and sharing.</p>
+<p>Summary and Review for The Future of Data Analysis (Tufte, Edward,2016)</p>
+<p>The talk opens with David Smith’s personal story about discovering Edward Tufte’s <em>The Visual Display of Quantitative Information</em>, framing data science as the union of computation and the craft of communicating evidence. Tufte then lays out four threads (1) exemplars of excellence in visualization; (2) the ethical imperative to “get it right” in analysis; (3) a sharp separation between confirmatory (pre-specified, unhacked) and exploratory (detective) work; and (4) his current research on “the thinking eye,” the interface between light, perception, and reasoning.</p>
+<p>Drawing on Galileo’s “visible certainty,” Tufte argues that strong visuals convert speculation into evidence. He highlights a public-health project that digitized decades of MMWR data to show the dramatic, time-aligned impact of vaccination—an example where scale + design yield persuasive causal narratives. He contrasts this with failures: the Phillips Curve’s collapse outside a cherry-picked window; fMRI software that produced high false-positive rates; and Google Flu’s overfit, opaque model. The lesson: overfitting, researcher degrees of freedom, and p-hacking make many published findings untrustworthy.</p>
+<p>As remedies, he points to institutional designs that reduce analytic freedom at the point of confirmation: FDA requirements to pre-specify tables, models, and outcomes; political science journals accepting registered reports before analysts ever see the data. Exploration is still valuable—but its patterns should be independently replicated on fresh data. He also emphasizes data forensics as a communal, open-source discipline (not “secret sauce”) to catch mundane but consequential errors (e.g., Excel row limits, type coercions, missingness).</p>
+<p>On visualization craft, Tufte’s north star is content-driven design with high information throughput: maps as everyday exemplars; Swiss topographic cartography as “gentle 3D” that integrates words, numbers, and depiction without clutter; multi-view explanation (video, slow-mo, stop-action) for events like a soccer goal; and screen real estate (4K/5K/8K) as an underused affordance for seeing “big data” in one analytic frame. Practical heuristics: show causality (annotated linking lines; verbs, not nouns), show comparisons (“compared with what?”), and privilege substance over style (zero chart junk).</p>
+<p>The final arc, “the thinking eye,” centers on disciplined skepticism: constantly ask “How do I know that?”; beware survivorship bias; remember that metrics are gamed; go into the field to observe how data are truly generated; and structure your day to protect deep work (“real artists ship”).</p>
+<p>Review. The talk’s strengths are its synthesis of epistemology, institutional design, and graphic craft—and its specificity. Instead of generic “be ethical,” we get operational fixes (pre-registration, independent replication, shared forensics checklists). The visual exemplars are well-chosen: they demonstrate density without clutter and connect design choices to cognitive tasks. If there’s a limitation, it’s that some cases (e.g., MRI and Google Flu) are presented briskly; a few technical footnotes on what precisely failed (e.g., multiple-comparison correction assumptions, feature leakage) would help practitioners prevent repeats. Still, the overarching argument—separate exploration from confirmation; make the pipeline auditable; design for reasoning—is clear and compelling.</p>
+<p>Reflection. Three takeaways I’d apply immediately:</p>
+<ol type="1">
+<li><p>Pre-commit where it matters. For confirmatory studies, write analysis plans, model formulas, and primary tables <em>before</em> touching the data; park all post-hoc ideas into an “exploratory” appendix and seek replication on fresh samples.</p></li>
+<li><p>Design to answer a verb. Every figure should complete a sentence like “X causes Y” or “X increased after policy Z”—with annotations, aligned timelines, and explicit counterfactual or comparison groups. If the figure can’t support the verb, redesign it or change the claim.</p></li>
+<li><p>Raise the information ceiling, not the ink. Prefer one rich, labeled, multi-layered view over a carousel of minimalist charts. Use large canvases, quantified typography, and integrated labels; avoid decorative 3D but embrace “gentle 3D” when it encodes real structure.</p></li>
+</ol>
+<p>Personally, the reminder to <em>go see how measurements are made</em> is catalytic: many “mystery” artifacts in code are traceable to messy collection practices. And the daily habit advice—start with the work, not the feed—aligns with doing careful, reproducible analysis. In short, the talk re-centers data science on its first principles: evidence over assertion, explanation over performance, and designs that help the eye think.</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
