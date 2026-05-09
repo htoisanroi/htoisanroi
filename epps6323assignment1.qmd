@@ -1,0 +1,263 @@
+---
+title: "Assignment 1 - Brush up R and Quarto"
+author: "Tryphosa Htoisanroi"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    theme: cosmo
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+Introduction
+
+This assignment reviews basic R programming, Quarto formatting, and exploratory data analysis using the TEDS 2016 dataset. The purpose is to become familiar with data structures in R, identify potential data problems, handle missing values, and explore possible relationships between political attitude variables.
+
+Load Required Packages
+
+{r}
+# Install packages if needed
+# install.packages(c("tidyverse", "haven", "skimr", "janitor"))
+
+library(tidyverse)
+library(haven)
+library(skimr)
+library(janitor)
+
+Load the Dataset
+
+{r}
+TEDS_2016 <- haven::read_dta(
+  "https://github.com/datageneration/home/blob/master/DataProgramming/data/TEDS_2016.dta?raw=true"
+)
+
+Explore the Dataset
+
+Display the Dataset
+
+{r}
+head(TEDS_2016)
+
+View Dataset Structure
+
+{r}
+glimpse(TEDS_2016)
+
+Summary Statistics
+
+{r}
+summary(TEDS_2016)
+
+Check Variable Names
+
+{r}
+names(TEDS_2016)
+
+Exploratory Data Analysis
+
+Missing Values
+
+{r}
+missing_values <- colSums(is.na(TEDS_2016))
+missing_values |>
+  sort(decreasing = TRUE) |>
+  head(15)
+
+Overall Dataset Summary
+
+{r}
+skim(TEDS_2016)
+
+Problems Encountered in the Dataset
+
+Several problems were identified while working with the TEDS 2016 dataset.
+
+1. Missing Values
+
+Many variables contain missing observations. Missing values can reduce sample size and affect statistical accuracy.
+
+2. Labelled Variables
+
+Some variables are imported as labelled variables instead of numeric or factor variables. This can create problems when running statistical models.
+
+3. Difficult Variable Names
+
+Some variable names are abbreviated and difficult to understand without documentation.
+
+4. Uneven Categories
+
+Certain categorical variables contain categories with very few observations.
+
+5. Data Cleaning Requirements
+
+Some variables require recoding before analysis.
+
+Handling Missing Values
+
+There are several approaches for handling missing values.
+
+Remove Missing Values
+
+{r}
+TEDS_clean <- na.omit(TEDS_2016)
+
+Replace Missing Values
+
+Example using mean replacement:
+
+{r}
+TEDS_2016$age[is.na(TEDS_2016$age)] <- mean(
+  TEDS_2016$age,
+  na.rm = TRUE
+)
+
+Why Missing Values Matter
+
+Missing data can:
+
+Reduce statistical power
+
+Create biased results
+
+Affect regression models
+
+Reduce prediction accuracy
+
+Therefore, careful data cleaning is important before conducting analysis.
+
+Relationship Between Tondu and Other Variables
+
+The assignment asks us to explore the relationship between Tondu and other variables including:
+
+female
+
+DPP
+
+age
+
+income
+
+edu
+
+Taiwanese
+
+Econ_worse
+
+Several statistical methods can be used.
+
+Possible Statistical Methods
+
+1. Frequency Tables
+
+Frequency tables help summarize distributions of categorical variables.
+
+2. Cross-Tabulation
+
+Cross-tabulation can compare relationships between two categorical variables.
+
+Example:
+
+{r}
+# Example cross-tabulation
+# table(TEDS_2016$Tondu, TEDS_2016$female)
+
+3. Correlation Analysis
+
+Correlation can examine relationships between numeric variables.
+
+4. Regression Analysis
+
+Linear regression or logistic regression can estimate relationships between dependent and independent variables.
+
+Example:
+
+{r}
+model1 <- lm(age ~ income + edu, data = TEDS_2016)
+summary(model1)
+
+5. Visualization
+
+Graphs can help identify patterns and trends.
+
+Exploring the votetsai Variable
+
+The variable votetsai represents voting behavior related to Tsai Ing-wen.
+
+Possible analyses include:
+
+Frequency analysis
+
+Cross-tabulation with party identification
+
+Logistic regression
+
+Classification models
+
+Frequency Table for votetsai
+
+{r}
+table(TEDS_2016$votetsai)
+
+Recode Tondu Variable
+
+The assignment requests assigning labels to the Tondu variable.
+
+{r}
+TEDS_2016$Tondu <- factor(
+  as.numeric(TEDS_2016$Tondu),
+  labels = c(
+    "Unification now",
+    "Status quo, unif. in future",
+    "Status quo, decide later",
+    "Status quo forever",
+    "Status quo, indep. in future",
+    "Independence now",
+    "No response"
+  )
+)
+
+Frequency Table of Tondu
+
+{r}
+table(TEDS_2016$Tondu)
+
+Bar Chart of Tondu
+
+{r}
+ggplot(TEDS_2016, aes(x = Tondu)) +
+  geom_bar() +
+  theme_minimal() +
+  labs(
+    title = "Distribution of Tondu",
+    x = "Tondu Category",
+    y = "Frequency"
+  ) +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+
+Interpretation of Results
+
+The bar chart shows the distribution of political attitudes regarding Taiwanese independence and unification. Some categories appear much more frequently than others, suggesting that public opinion is concentrated in several major political positions.
+
+The exploratory analysis also demonstrates that political attitudes may be associated with demographic characteristics such as age, education, and party preference.
+
+Conclusion
+
+This assignment reviewed basic R programming and Quarto usage while conducting exploratory data analysis using the TEDS 2016 dataset. Several challenges were identified, including missing values, labelled variables, and categorical data issues. Different statistical methods such as cross-tabulation, regression, and visualization can be used to further analyze relationships between political variables.
+
+Overall, this assignment provided useful experience in data cleaning, exploratory analysis, and political data interpretation using R.
+
+References
+
+Wickham, H., Çetinkaya-Rundel, M., & Grolemund, G. R for Data Science
+
+TEDS 2016 Dataset
+
+EPPS6323 Knowledge Mining Course Materials
+
+

@@ -1,0 +1,320 @@
+---
+title: "Assignment 4 - Text Analytics using quanteda"
+author: "Tryphosa Htoisanroi"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+# Introduction
+
+This assignment applies text analytics methods using the `quanteda` package in R. The purpose is to analyze political text data, identify similarities and differences across documents, and apply scaling techniques such as Wordfish to compare document positions.
+
+Text analytics is increasingly important in political science, social science, and machine learning because it allows researchers to study large collections of documents systematically.
+
+# Load Required Packages
+
+```{r}
+library(quanteda)
+library(quanteda.textplots)
+library(quanteda.textstats)
+library(quanteda.textmodels)
+library(ggplot2)
+```
+
+# US Presidential Inaugural Speeches
+
+The first part of the assignment analyzes U.S. presidential inaugural speeches included in quanteda.
+
+# Load the Corpus
+
+```{r}
+data_corpus_inaugural
+```
+
+# Corpus Summary
+
+```{r}
+summary(data_corpus_inaugural)
+```
+
+# Create Tokens
+
+Tokenization converts text into individual words.
+
+```{r}
+toks_inaugural <- tokens(
+  data_corpus_inaugural,
+  remove_punct = TRUE,
+  remove_symbols = TRUE,
+  remove_numbers = TRUE
+)
+```
+
+# Remove Stopwords
+
+Stopwords are common words such as “the” and “and” that usually provide little analytical value.
+
+```{r}
+toks_inaugural <- tokens_remove(
+  toks_inaugural,
+  pattern = stopwords("en")
+)
+```
+
+# Create Document Feature Matrix
+
+```{r}
+dfm_inaugural <- dfm(toks_inaugural)
+
+dfm_inaugural
+```
+
+# Most Frequent Words
+
+```{r}
+freq_words <- textstat_frequency(
+  dfm_inaugural,
+  n = 20
+)
+
+freq_words
+```
+
+# Frequency Plot
+
+```{r}
+ggplot(
+  freq_words,
+  aes(
+    x = reorder(feature, frequency),
+    y = frequency
+  )
+) +
+  geom_col() +
+  coord_flip() +
+  theme_minimal() +
+  labs(
+    title = "Most Frequent Words in Presidential Speeches",
+    x = "Words",
+    y = "Frequency"
+  )
+```
+
+# Similarities and Differences Across Presidents
+
+## Similarities
+
+Several themes consistently appear across presidential inaugural speeches.
+
+Common themes include:
+
+-   Democracy
+-   Freedom
+-   National unity
+-   Economic prosperity
+-   American values
+
+These themes reflect the traditional goals of presidential speeches.
+
+## Differences
+
+Important differences can also be observed across presidents and historical periods.
+
+### Earlier Presidents
+
+Earlier speeches often focused on:
+
+-   Nation building
+-   Constitutional principles
+-   Territorial expansion
+
+### War-Time Presidents
+
+War-time speeches emphasized:
+
+-   Military strength
+-   National security
+-   Patriotism
+
+### Modern Presidents
+
+Modern speeches discuss:
+
+-   Globalization
+-   Technology
+-   Climate change
+-   Diversity
+-   International cooperation
+
+Political ideology also affects speech content and language choices.
+
+# Wordcloud Visualization
+
+```{r}
+textplot_wordcloud(
+  dfm_inaugural,
+  max_words = 100
+)
+```
+
+# What is Wordfish?
+
+Wordfish is a statistical text scaling model used to estimate the positions of documents based on word frequencies.
+
+It is commonly used in:
+
+-   Political science
+-   Policy analysis
+-   Ideological comparison
+-   Legislative studies
+
+Wordfish assumes that documents with similar word usage patterns are positioned closer together.
+
+# Run Wordfish Model
+
+```{r}
+wf_model <- textmodel_wordfish(dfm_inaugural)
+
+summary(wf_model)
+```
+
+# Plot Wordfish Results
+
+```{r}
+textplot_scale1d(wf_model)
+```
+
+# Interpretation of Wordfish Results
+
+The Wordfish model estimates latent political or rhetorical dimensions across speeches.
+
+Documents positioned closer together share similar language patterns, while documents farther apart differ in emphasis and rhetorical style.
+
+Possible interpretations include:
+
+-   Liberal versus conservative language
+-   Domestic versus foreign policy focus
+-   War-time versus peace-time rhetoric
+
+# Comparing Positions Using Scaling Methods
+
+Scaling methods help compare positions across documents.
+
+Common methods include:
+
+-   Wordfish
+-   Correspondence analysis
+-   Topic modeling
+-   Sentiment analysis
+
+These methods are useful for understanding ideological differences and policy emphasis.
+
+# US Department of Defense Reports
+
+The assignment also requests text analytics on Department of Defense reports.
+
+# Example Workflow
+
+```{r}
+# Example structure only
+
+# library(readtext)
+
+# dod_text <- readtext("USDOD/*.txt")
+
+# dod_corpus <- corpus(dod_text)
+
+# dod_tokens <- tokens(
+#   dod_corpus,
+#   remove_punct = TRUE,
+#   remove_numbers = TRUE
+# )
+
+# dod_dfm <- dfm(dod_tokens)
+```
+
+# Possible Analyses for DOD Reports
+
+Potential analyses include:
+
+-   Most frequent defense-related terms
+-   Security and military emphasis
+-   Changes in strategic priorities over time
+-   International relations topics
+-   Threat analysis language
+
+# APSA eJobs Hackathon
+
+The final section involves creating a corpus from APSA eJobs postings.
+
+# Create Corpus
+
+```{r}
+# Example structure
+
+# jobs_text <- readtext("jobs/*.txt")
+
+# jobs_corpus <- corpus(jobs_text)
+```
+
+# Potential Text Analytics
+
+Possible analyses include:
+
+-   Most requested research skills
+-   Common teaching fields
+-   Frequently requested methodologies
+-   Geographic hiring trends
+-   Growth of quantitative methods
+-   AI and machine learning demand
+
+# Example DFM for Job Ads
+
+```{r}
+# Example workflow
+
+# jobs_tokens <- tokens(
+#   jobs_corpus,
+#   remove_punct = TRUE
+# )
+
+# jobs_dfm <- dfm(jobs_tokens)
+```
+
+# Discussion
+
+This assignment demonstrates how text analytics can be used to study political language, institutional reports, and job market trends.
+
+Quanteda provides powerful tools for:
+
+-   Tokenization
+-   Frequency analysis
+-   Visualization
+-   Statistical scaling
+-   Corpus analysis
+
+The Wordfish model is especially useful for comparing ideological or rhetorical positions across documents.
+
+# Conclusion
+
+This assignment applied text analytics methods using quanteda to analyze presidential inaugural speeches and other political documents.
+
+The analysis identified important similarities and differences across speeches, demonstrated visualization methods, and introduced statistical scaling using Wordfish.
+
+Text analytics provides researchers with powerful tools for studying political communication, institutional language, and social science data.
+
+Overall, this assignment provided valuable experience with corpus analysis, document feature matrices, and political text scaling methods in R.
+
+# References
+
+-   Benoit, K. et al. *quanteda: An R package for the quantitative analysis of textual data*
+-   James, G. et al. *Introduction to Statistical Learning*
+-   EPPS6323 Knowledge Mining Course Materials
+

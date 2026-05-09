@@ -1,0 +1,110 @@
+---
+title: "Tryphosa Htoisanroi"
+format:
+  pdf:
+    toc: false
+    number-sections: false
+fontsize: 11pt
+geometry: margin=1in
+---
+
+# Contact
+
+Richardson, Dallas, TX 75252  
++1 972-565-4255  
+tryphosahtoisanroi@gmail.com  
+LinkedIn: https://www.linkedin.com/in/tryphosa-htoisanroi/
+
+# Education
+
+## The University of Texas at Dallas
+**Master of Science in Social Data Analytics and Research**  
+2025 – Present  
+GPA: 3.8
+
+## Yangon University of Foreign Languages
+**Bachelor of English**  
+2016 – 2023  
+GPA: 3.5
+
+## Wise College
+**Higher and Advanced Diploma of Business Management**  
+2018 – 2019  
+GPA: 3.8
+
+# Professional Experience
+
+## Institute of Urban Policy and Research, The University of Texas at Dallas
+**Policy Research Analyst**  
+May 2025 – Aug 2025
+
+- Conduct qualitative and quantitative research on urban policy issues.
+- Collect, manage, and analyze datasets from surveys and public data sources.
+- Apply statistical and research tools including R, STATA, SAS, GIS, and survey platforms.
+- Measure program effectiveness and social impact using data-driven methods.
+- Prepare evaluation reports and policy recommendations.
+- Produce policy briefs, research reports, and technical papers.
+
+### Projects
+- Dallas Domestic Violence Task Force Annual Report (2025)
+- Beyond ABC Project Annual Report – Accessing Children’s Health in Dallas County (2025)
+- North Texas Quality of Life Initiative Annual Research Project (2026)
+
+## Myanmar Marketing Research and Development (MMRD)
+**Executive Researcher**  
+Dec 2020 – Nov 2023
+
+- Conducted qualitative and quantitative research projects.
+- Designed questionnaires and interview guidelines.
+- Managed training, fieldwork, analysis, and reporting.
+- Prepared PowerPoint presentations and client reports.
+- Conducted B2B sales and client relationship management.
+
+### Projects
+- Myanmar Vocational Education Market Study (2021)
+- Language Market in Yangon (2021)
+- IELTS Training Market in Yangon (2021)
+- Food Security and Livelihoods in Myanmar – World Bank Project (2022)
+- Private Healthcare Training Market in Yangon (2022)
+- Accounting Training Market in Yangon (2023)
+- Myanmar Agricultural Export Market (2023)
+- User Research for Atlat Software (2023)
+- Engineering Training Market in Yangon (2023)
+- IT Training Market in Yangon (2023)
+- International School Market in Yangon (2023)
+
+# Publications
+
+Children’s Health. (2025). *Beyond ABC 2025–2026: Assessing the well-being of children in North Texas.*
+
+Boots, D. P., Bray, T. M., & Roi, T. H. S. (2025). *The efficacy of battering intervention and prevention programs.* Institute for Urban Policy Research.
+
+# Organization Experience
+
+## International Christian Fellowship (ICF), University of Texas at Dallas
+**Vice President**  
+May 2025 – May 2026
+
+- Lead and manage fellowship activities and events.
+
+# Skills
+
+- Excel
+- R
+- SQL
+- STATA
+- Python
+- ArcGIS Pro
+- Power BI
+- Tableau
+- Shiny
+
+# Languages
+
+- English
+- Burmese
+- Kachin
+
+# Eligibility
+
+Authorized to work in the United States. No visa sponsorship required.
