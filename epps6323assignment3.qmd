@@ -1,0 +1,234 @@
+``` yaml
+---
+title: "Assignment 3 - Machine Learning Exercise"
+author: "Tryphosa Htoisanroi"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    theme: cosmo
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+```
+
+# Introduction
+
+This assignment applies regression analysis and basic machine learning concepts using the TEDS 2016 dataset. The objective is to examine relationships between variables and evaluate the limitations of regression models when the dependent variable contains multiple categories.
+
+# Load Required Packages
+
+```{r}
+# Install packages if needed
+# install.packages(c("tidyverse", "haven"))
+
+library(tidyverse)
+library(haven)
+```
+
+# Load the Dataset
+
+```{r}
+TEDS_2016 <- read_stata(
+  "https://github.com/datageneration/home/blob/master/DataProgramming/data/TEDS_2016.dta?raw=true"
+)
+```
+
+# Explore the Dataset
+
+## Display First Rows
+
+```{r}
+head(TEDS_2016)
+```
+
+## View Dataset Structure
+
+```{r}
+glimpse(TEDS_2016)
+```
+
+## Summary Statistics
+
+```{r}
+summary(TEDS_2016)
+```
+
+# Multiple Regression Model
+
+The assignment requires running a multiple regression model using the TEDS 2016 dataset.
+
+## Example Multiple Regression
+
+```{r}
+model1 <- lm(age ~ income + edu + female, data = TEDS_2016)
+summary(model1)
+```
+
+# Interpretation of Regression Results
+
+The regression model estimates the relationship between age and the independent variables income, education, and gender.
+
+Important outputs include:
+
+-   Coefficients
+-   Standard errors
+-   t-values
+-   p-values
+-   R-squared value
+
+The model helps identify whether demographic variables are associated with age differences in the dataset.
+
+# Creating the regplot Function
+
+The assignment requests creating a function called `regplot`.
+
+```{r}
+regplot <- function(x, y) {
+  fit <- lm(y ~ x)
+  plot(x, y,
+       main = "Regression Plot",
+       xlab = "Independent Variable",
+       ylab = "Dependent Variable")
+  abline(fit, col = "red", lwd = 2)
+}
+```
+
+# Regression Plot Using Age
+
+```{r}
+regplot(TEDS_2016$age, as.numeric(TEDS_2016$Tondu))
+```
+
+# Regression Plot Using Education
+
+```{r}
+regplot(TEDS_2016$edu, as.numeric(TEDS_2016$Tondu))
+```
+
+# Regression Plot Using Income
+
+```{r}
+regplot(TEDS_2016$income, as.numeric(TEDS_2016$Tondu))
+```
+
+# Problems Identified
+
+The assignment asks us to identify problems with the regression analysis.
+
+## Main Problem
+
+The major issue is that the dependent variable contains multiple categories rather than continuous numeric values.
+
+The `Tondu` variable represents political attitude categories, which are ordinal or categorical rather than truly continuous.
+
+# Why Is This a Problem?
+
+Linear regression assumes that:
+
+1.  The dependent variable is continuous.
+2.  Relationships are linear.
+3.  Residuals are normally distributed.
+4.  Variance is constant.
+
+However, categorical political attitude variables violate these assumptions.
+
+As a result:
+
+-   Predicted values may become unrealistic.
+-   The regression line may not represent actual category relationships.
+-   Statistical assumptions may be violated.
+
+# Visual Interpretation
+
+The regression plots show scattered observations with weak linear patterns. Since the dependent variable contains categories, the fitted regression line does not fully capture the political preference structure.
+
+# Improving Prediction
+
+Several methods can improve prediction accuracy.
+
+# 1. Ordinal Logistic Regression
+
+Ordinal logistic regression is more appropriate for ordered categories.
+
+```{r}
+# Example only
+# install.packages("MASS")
+# library(MASS)
+# polr_model <- polr(as.factor(Tondu) ~ age + edu + income,
+#                    data = TEDS_2016)
+```
+
+# 2. Multinomial Logistic Regression
+
+Multinomial logistic regression can model categorical outcomes with multiple groups.
+
+# 3. Decision Trees
+
+Decision trees can classify observations into categories without requiring linear relationships.
+
+# 4. Random Forest
+
+Random forest models can improve prediction performance using ensemble learning methods.
+
+# 5. Support Vector Machines
+
+Support vector machines are useful for classification problems with complex boundaries.
+
+# Advantages of Machine Learning Methods
+
+Machine learning methods provide several advantages:
+
+-   Better classification performance
+-   Ability to model nonlinear relationships
+-   Fewer assumptions about distributions
+-   Improved prediction accuracy
+
+# Example Data Visualization
+
+## Scatter Plot
+
+```{r}
+ggplot(TEDS_2016,
+       aes(x = age,
+           y = as.numeric(TEDS_2016$Tondu))) +
+  geom_point(alpha = 0.4) +
+  geom_smooth(method = "lm", color = "blue") +
+  theme_minimal() +
+  labs(
+    title = "Relationship Between Age and Tondu",
+    x = "Age",
+    y = "Tondu"
+  )
+```
+
+# Discussion
+
+This assignment demonstrates that selecting the correct statistical model is important when working with categorical political data. While linear regression provides a simple introduction to modeling relationships, more advanced classification approaches are better suited for categorical dependent variables.
+
+The exercise also highlights the importance of understanding:
+
+-   Variable types
+-   Model assumptions
+-   Prediction accuracy
+-   Appropriate machine learning techniques
+
+# Conclusion
+
+This assignment applied regression analysis and machine learning concepts using the TEDS 2016 dataset. The results demonstrated important limitations of ordinary least squares regression when the dependent variable contains multiple categories.
+
+Several alternative methods, including ordinal logistic regression and machine learning classification models, can provide more accurate predictions and better representation of political attitude data.
+
+Overall, this assignment provided useful experience in statistical modeling, regression visualization, and evaluation of machine learning approaches in political data analysis.
+
+# References
+
+-   James, G., Witten, D., Hastie, T., & Tibshirani, R. *Introduction to Statistical Learning*
+-   Wickham, H. et al. *R for Data Science*
+-   EPPS6323 Knowledge Mining Course Materials
+
+```         
+```
